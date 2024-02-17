@@ -1,0 +1,1 @@
+args_forURlaunch = {'ur_type':ur3e, 'robot_ip':192.168.20.35,'use_fake_hardware':true,'launch_rviz':true,'initial_joint_controller':joint_trajectory_controller}

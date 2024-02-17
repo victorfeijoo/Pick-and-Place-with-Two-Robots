@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>my_func_nodes</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="mario.sgarcia@alumnos.upm.es">mario</maintainer>
+  <license>TODO: License declaration</license>
+
+  <depend>rclpy</depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>my_moveit2_py</test_depend>
+  <exec_depend>my_moveit2_py</exec_depend>
+  
+  <test_depend>msg_camara</test_depend>
+  <exec_depend>msg_camara</exec_depend>
+  
+  <test_depend>depthai</test_depend>
+  <exec_depend>depthai</exec_depend>
+  
+  <test_depend>tkinter</test_depend>
+  <exec_depend>tkinter</exec_depend>
+  
+  <test_depend>PIL</test_depend>
+  <exec_depend>PIL</exec_depend>
+
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>cv_bridge</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>torch</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_export_depend>cv_bridge</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>torch</build_export_depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>torch</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+  
+  
+  <build_depend>numpy</build_depend>       
+  <build_depend>pyrealsense2</build_depend>
+  <build_depend>depthai_ros_msgs</build_depend>
+  
+  <exec_depend>numpy</exec_depend>
+  <exec_depend>pyrealsense2</exec_depend>
+  <exec_depend>depthai_ros_msgs</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+
+
