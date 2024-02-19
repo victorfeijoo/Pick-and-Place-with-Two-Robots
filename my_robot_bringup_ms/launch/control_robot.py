@@ -16,7 +16,7 @@ def generate_launch_description():
     get_package_share_directory("my_robot_bringup_ms")
     
     config_parameters = PathJoinSubstitution(
-        [FindPackageShare("my_robot_bringup_ms"), "/home/mario/workspace/ros_ur_driver/src/my_robot_bringup_ms/config", "param_bringup.yaml"]
+        [FindPackageShare("my_robot_bringup_ms"), "/home/victor/workspace/ros_ur_driver/src/Pick-and-Place-with-ROS2/my_robot_bringup_ms/config", "param_bringup.yaml"]
     )
     
     try:
@@ -35,7 +35,7 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([
                 PathJoinSubstitution([
                     FindPackageShare('ur_bringup'),
-                    "/home/mario/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_bringup/launch",'ur_control.launch.py'
+                    "/home/victor/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_bringup/launch",'ur_control.launch.py'
                 ])
             ]),
             launch_arguments={
@@ -51,7 +51,7 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([
                 PathJoinSubstitution([
                     FindPackageShare('ur_bringup'),
-                    "/home/mario/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_bringup/launch",'ur_moveit.launch.py'
+                    "/home/victor/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_bringup/launch",'ur_moveit.launch.py'
                 ])
             ]),
             launch_arguments={

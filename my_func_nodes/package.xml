@@ -4,7 +4,7 @@
   <name>my_func_nodes</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="mario.sgarcia@alumnos.upm.es">mario</maintainer>
+  <maintainer email="v.feijoo@alumnos.upm.es">victor</maintainer>
   <license>TODO: License declaration</license>
 
   <depend>rclpy</depend>

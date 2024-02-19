@@ -29,35 +29,35 @@ class interfaz_menu(Node):
         self.ventana.configure(bg="#FFFFFF") 
 
         #Images load
-        self.robot_imagen = Image.open("/home/mario/workspace/ros_ur_driver/src/my_func_nodes/resource/robot.jpeg")
+        self.robot_imagen = Image.open("/home/victor/workspace/ros_ur_driver/src/Pick-and-Place-with-ROS2/my_func_nodes/resource/robot.jpeg")
         self.robot_imagen = self.robot_imagen.resize((400, 488))
         self.imagen_tk_robot = ImageTk.PhotoImage(self.robot_imagen)
 
-        self.imagen_v = Image.open("/home/mario/workspace/ros_ur_driver/src/my_func_nodes/resource/verde.png")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
+        self.imagen_v = Image.open("/home/victor/workspace/ros_ur_driver/src/Pick-and-Place-with-ROS2/my_func_nodes/resource/verde.png")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
         self.imagen_v = self.imagen_v.resize((10000, 4000)) 
         self.imagen_tk_v = ImageTk.PhotoImage(self.imagen_v)
 
-        self.imagen_a = Image.open("/home/mario/workspace/ros_ur_driver/src/my_func_nodes/resource/azul.jpeg")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
+        self.imagen_a = Image.open("/home/victor/workspace/ros_ur_driver/src/Pick-and-Place-with-ROS2/my_func_nodes/resource/azul.jpeg")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
         self.imagen_a = self.imagen_a.resize((10000, 4000)) 
         self.imagen_tk_a = ImageTk.PhotoImage(self.imagen_a)
 
-        self.imagen_n = Image.open("/home/mario/workspace/ros_ur_driver/src/my_func_nodes/resource/naranja.png")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
+        self.imagen_n = Image.open("/home/victor/workspace/ros_ur_driver/src/Pick-and-Place-with-ROS2/my_func_nodes/resource/naranja.png")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
         self.imagen_n = self.imagen_n.resize((10000, 4000)) 
         self.imagen_tk_n = ImageTk.PhotoImage(self.imagen_n)
 
-        self.imagen_m = Image.open("/home/mario/workspace/ros_ur_driver/src/my_func_nodes/resource/morado.png")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
+        self.imagen_m = Image.open("/home/victor/workspace/ros_ur_driver/src/Pick-and-Place-with-ROS2/my_func_nodes/resource/morado.png")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
         self.imagen_m = self.imagen_m.resize((10000, 4000)) 
         self.imagen_tk_m = ImageTk.PhotoImage(self.imagen_m)
 
-        self.imagen_ap1 = Image.open("/home/mario/workspace/ros_ur_driver/src/my_func_nodes/resource/AP1.png")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
+        self.imagen_ap1 = Image.open("/home/victor/workspace/ros_ur_driver/src/Pick-and-Place-with-ROS2/my_func_nodes/resource/AP1.png")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
         self.imagen_ap1 = self.imagen_ap1.resize((200, 140)) 
         self.imagen_tk_ap1 = ImageTk.PhotoImage(self.imagen_ap1)
 
-        self.imagen_ap2 = Image.open("/home/mario/workspace/ros_ur_driver/src/my_func_nodes/resource/AP2.png")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
+        self.imagen_ap2 = Image.open("/home/victor/workspace/ros_ur_driver/src/Pick-and-Place-with-ROS2/my_func_nodes/resource/AP2.png")  # Reemplaza "imagen.jpg" con la ruta y nombre de tu imagen en formato JPEG
         self.imagen_ap2 = self.imagen_ap2.resize((200, 140)) 
         self.imagen_tk_ap2 = ImageTk.PhotoImage(self.imagen_ap2)
 
-        self.imagen_ap3 = Image.open("/home/mario/workspace/ros_ur_driver/src/my_func_nodes/resource/AP3.png") 
+        self.imagen_ap3 = Image.open("/home/victor/workspace/ros_ur_driver/src/Pick-and-Place-with-ROS2/my_func_nodes/resource/AP3.png") 
         self.imagen_ap3 = self.imagen_ap3.resize((200, 140)) 
         self.imagen_tk_ap3 = ImageTk.PhotoImage(self.imagen_ap3)
 
