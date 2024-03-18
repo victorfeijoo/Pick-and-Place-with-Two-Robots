@@ -12,8 +12,14 @@ from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
 
-
-    get_package_share_directory("my_robot_bringup_ms")
+    try:
+        get_package_share_directory("my_robot_bringup_ms")
+    except PackageNotFoundError:
+        print(
+            "ERROR:"
+            "Could not find the package my_robot_bringup_ms" 
+        )
+        sys.exit(1)
     
     config_parameters = PathJoinSubstitution(
         [FindPackageShare("my_robot_bringup_ms"), "/home/victor/workspace/ros_ur_driver/src/Pick-and-Place-with-ROS2/my_robot_bringup_ms/config", "param_bringup.yaml"]
@@ -24,11 +30,18 @@ def generate_launch_description():
     except PackageNotFoundError:
         print(
             "ERROR:"
-            "Could not find the package" 
+            "Could not find the package my_func_nodes" 
         )
         sys.exit(1)
 
-    get_package_share_directory("ur_bringup")
+    try:
+        get_package_share_directory("ur_bringup")
+    except PackageNotFoundError:
+        print(
+            "ERROR:"
+            "Could not find the package ur_bringup" 
+        )
+        sys.exit(1)
 
     #Ejecucion del archivo de lanzamiento de lo controladores de UR
     drivers = IncludeLaunchDescription(
@@ -51,7 +64,7 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([
                 PathJoinSubstitution([
                     FindPackageShare('ur_bringup'),
-                    "/home/victor/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_bringup/launch",'ur_moveit.launch.py'
+                    "/home/victor/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_moveit_config/launch",'ur_moveit.launch.py'
                 ])
             ]),
             launch_arguments={
