@@ -1,3 +1,4 @@
+import sys
 import asyncio
 import rclpy
 from rclpy.node import Node
@@ -186,13 +187,39 @@ class control_robot_master(Node):
         else:
             return
 
+    # Victor funcion para comprobar si esta conectado
+    def robot_connected(self):
+
+        try:
+            # Inicializar ROS
+            #rclpy.init()
+
+            # Intentar crear un nodo
+            conex_test = rclpy.create_node("connection_test_node")
+
+            # Si llegamos hasta aquí sin errores, la conexión al robot es exitosa
+            conex_test.destroy_node()
+            #rclpy.shutdown()
+            return True
+        except Exception as e:
+            # Si ocurre algún error durante la inicialización de ROS o la creación del nodo, asumimos que la conexión falla
+            return False
 
 def main(args=None):
+    
     rclpy.init(args=args)
     contador = 0
     respuesta = 0
-    control_node = control_robot_master() #Object of the class created for the control of the robot
+    control_node = control_robot_master() #Object of the class created for the control of the robot    
     
+    # Victor comprobacion de conexion
+    if control_node.robot_connected():
+        print("Conexión al robot establecida con éxito.")
+        sys.exit(1)
+    else:
+        print("No se pudo conectar al robot. Verifique la configuración de ROS y vuelva a intentarlo.")
+
+
     #Instatiation of Moveit
     moveit2 = MoveIt2(
         node=control_node,
