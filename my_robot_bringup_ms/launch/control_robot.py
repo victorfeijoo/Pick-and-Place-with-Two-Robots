@@ -74,7 +74,7 @@ def generate_launch_description():
             }.items()
         )
         
-    #Ejecucion del nodo creador de imagenes, camera
+    #Ejecucion del nodo creador de imagenes, camera 
     camera = Node(
                 package="my_func_nodes",
                 executable="camera_exec",
@@ -84,7 +84,7 @@ def generate_launch_description():
                     "stderr": "screen",
                 },
             )
-    
+
     
     #Ejecucion del nodo de control del robot, control_robot_node
     control_robot_node = Node(

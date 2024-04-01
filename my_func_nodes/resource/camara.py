@@ -14,7 +14,11 @@ class CameraPublisher(Node):
     def __init__(self):
         super().__init__('camera_publisher')
 # Create pipeline
-        self.pipeline = dai.Pipeline()
+        try: 
+            self.pipeline = dai.Pipeline()
+        except dai.error.DepthAIError as e:
+            print("Error de DepthAI:", e)
+            sys.exit(1)
 
         # Define sources and outputs
         self.monoLeft = self.pipeline.create(dai.node.MonoCamera)

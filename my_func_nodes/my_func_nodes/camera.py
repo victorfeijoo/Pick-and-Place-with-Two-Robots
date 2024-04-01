@@ -83,44 +83,50 @@ class CameraPublisher(Node):
 
     #Device connection and pipeline starts
     def frame_grabber(self):
-        with dai.Device(self.pipeline) as device:
+        try:
+            with dai.Device(self.pipeline) as device:
 
-            # Output queues 
-            qRgb = device.getOutputQueue(name="rgb", maxSize=4, blocking=False)
-            qDepth = device.getOutputQueue(name="disparity", maxSize=4, blocking=False)
+                # Output queues 
+                qRgb = device.getOutputQueue(name="rgb", maxSize=4, blocking=False)
+                qDepth = device.getOutputQueue(name="disparity", maxSize=4, blocking=False)
 
-            #Calibration
-            calibData = device.readCalibration()
-            intrinsics = calibData.getCameraIntrinsics(dai.CameraBoardSocket.RIGHT)
-            self.get_logger().info(f'Right mono camera focal length in pixels: {intrinsics[0][0]}') #Camera calibration of focal length
-                
-            while True:
-              
-                #Quues management
-                inRgb = qRgb.tryGet()
-                inDisparity = qDepth.tryGet()
-
-                now = self.get_clock().now().to_msg()
-
-                #Images publication
-
-                if inDisparity is not None:
+                #Calibration
+                calibData = device.readCalibration()
+                intrinsics = calibData.getCameraIntrinsics(dai.CameraBoardSocket.RIGHT)
+                self.get_logger().info(f'Right mono camera focal length in pixels: {intrinsics[0][0]}') #Camera calibration of focal length
+    
                     
-                    disp_frame = inDisparity.getCvFrame()
-                    disp_frame_ros = self.bridge.cv2_to_imgmsg(disp_frame,'mono8')
-                    disp_frame_ros.header.stamp = now
-                    self.disparity_pub.publish(disp_frame_ros)
+                while True:
                     
-                if inRgb is not None:
-                    rgb_frame = inRgb.getCvFrame()
-                    rgb_frame_ros = self.bridge.cv2_to_imgmsg(rgb_frame, 'bgr8')
-                    self.rgb_info.header.stamp = now
-                    rgb_frame_ros.header.stamp = now
-                    self.rgb_pub.publish(rgb_frame_ros)
-                    self.rgb_info_pub.publish(self.rgb_info)
+                    #Quues management
+                    inRgb = qRgb.tryGet()
+                    inDisparity = qDepth.tryGet()
 
-                time.sleep(0.1)
-                
+                    now = self.get_clock().now().to_msg()
+
+                    #Images publication
+
+                    if inDisparity is not None:
+                        
+                        disp_frame = inDisparity.getCvFrame()
+                        disp_frame_ros = self.bridge.cv2_to_imgmsg(disp_frame,'mono8')
+                        disp_frame_ros.header.stamp = now
+                        self.disparity_pub.publish(disp_frame_ros)
+                        
+                    if inRgb is not None:
+                        rgb_frame = inRgb.getCvFrame()
+                        rgb_frame_ros = self.bridge.cv2_to_imgmsg(rgb_frame, 'bgr8')
+                        self.rgb_info.header.stamp = now
+                        rgb_frame_ros.header.stamp = now
+                        self.rgb_pub.publish(rgb_frame_ros)
+                        self.rgb_info_pub.publish(self.rgb_info)
+
+                        time.sleep(0.1)
+        except dai.error.DepthAIError as e:
+            print("Error de DepthAI:", e)
+            sys.exit(1)
+        except Exception as e:
+            print("Error inesperado:", e)    
                 
             
 def main(args=None):
