@@ -192,7 +192,7 @@ class control_robot_master(Node):
 
         try:
             # Inicializar ROS
-            #rclpy.init()
+            #rclpy.init(args=args)
 
             # Intentar crear un nodo
             conex_test = rclpy.create_node("connection_test_node")
@@ -215,10 +215,10 @@ def main(args=None):
     # Victor comprobacion de conexion
     if control_node.robot_connected():
         print("Conexión al robot establecida con éxito.")
-        sys.exit(1)
+        
     else:
         print("No se pudo conectar al robot. Verifique la configuración de ROS y vuelva a intentarlo.")
-
+        #sys.exit(1)
 
     #Instatiation of Moveit
     moveit2 = MoveIt2(
@@ -236,6 +236,32 @@ def main(args=None):
     executor_thread = Thread(target=executor.spin, daemon=True, args=())
     executor_thread.start()
 
+    
+
+    #Victor pruebas de movimiento del robot
+    try: 
+        #control_node.open_gripper()
+        #time.sleep(2)
+        posicion_home = [-0.251,-0.129,0.236]
+        orientacion = [0.58,0.82,-0.005,0.029]
+        posicion1 = [-0.251,-0.129,0.3]
+        #moveit2.move_to_pose(position = posicion_home, quat_xyzw = orientacion, cartesian=True) #moveit moves the robot
+        #moveit2.wait_until_executed()
+        #Position received: [0.0,0.0,0.139], 
+        #quat_xyzw: [0.570803357577419,0.8205298265175397,-0.00518912143252199,0.029789323459918908]
+
+        #control_node.close_gripper()
+        #time.sleep(2)
+        # Definir la posición deseada (en metros)
+        moveit2.move_to_pose(position=[-0.251,-0.129,0.195], quat_xyzw= [0.570803357577419,0.8205298265175397,-0.00518912143252199,0.029789323459918908], cartesian=False) #moveit moves the robot                  
+        moveit2.wait_until_executed()
+        #moveit2.move_to_pose(position = posicion1, quat_xyzw = orientacion, cartesian=True) #moveit moves the robot
+        #moveit2.wait_until_executed()
+        control_node.close_gripper()
+        time.sleep(2)
+    except Exception as e:
+        print("ERROR GRAVISIMO: ", e)
+    
     #MENU -> from GUI
 
     control_node.get_logger().info("Buenas, bienvenido!\nA continuacion va a poder elegir entre diferentes aplicaciones de Pick and Place \nOpcion 1: Coger las piezas por orden y depositarlas en casa \nOpcion 2: Ordenar las piezas por colores y depositarlas \nOpcion 3: Apilar piezas del mismo color \n")

@@ -121,12 +121,10 @@ class CameraPublisher(Node):
                         self.rgb_pub.publish(rgb_frame_ros)
                         self.rgb_info_pub.publish(self.rgb_info)
 
-                        time.sleep(0.1)
-        except dai.error.DepthAIError as e:
-            print("Error de DepthAI:", e)
-            sys.exit(1)
+                        time.sleep(0.1)  
         except Exception as e:
             print("Error inesperado:", e)    
+            sys.exit(1)
                 
             
 def main(args=None):

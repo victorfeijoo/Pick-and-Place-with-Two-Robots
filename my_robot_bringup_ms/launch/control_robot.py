@@ -69,7 +69,7 @@ def generate_launch_description():
             ]),
             launch_arguments={
                 'ur_type': 'ur3e',
-                'robot_ip': '192.168.20.35',
+                'robot_ip': '168.20.35',
                 'launch_rviz':'true'
             }.items()
         )
