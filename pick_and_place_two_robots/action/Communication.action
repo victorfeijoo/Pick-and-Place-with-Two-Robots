@@ -1,0 +1,25 @@
+# Communication.action
+# Request
+int32 identification
+float64[6] actual_pos
+float64[6] tcp_pos
+int32 gripper_status
+string last_action
+float64[6] goal_pos 
+bool detain
+---
+# Result
+float64[6] goal_pos
+string movement_type
+string actual_action
+string action_type
+bool detain
+---
+# Feedback
+float64[6] goal_pos
+string movement_type
+string actual_action
+string action_type
+bool detain 
+
+

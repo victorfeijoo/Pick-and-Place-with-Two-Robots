@@ -1,0 +1,6 @@
+MinimalActionServer: 
+  ros__parameters:
+    number_of_pieces: 4
+    positions: [6, 6, 18, 16, 21, 7, 4, 17] # x1, y1, x2, y2 ...
+    orientation: ["vertical", "horizontal", "vertical", "vertical"]
+    type: [2, 1, 2, 1]
