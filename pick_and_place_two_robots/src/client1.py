@@ -69,7 +69,7 @@ class MinimalActionClient(Node):
             else:
                 print("Process real-time priority set to: %u" % rt_app_priority)
 
-        # Iniciar el temporizador para enviar metas cada 0.6 segundos
+        # Iniciar el temporizador para enviar metas cada 0.7 segundos
         self.timer = self.create_timer(0.7, self.send_goal)
 
 
